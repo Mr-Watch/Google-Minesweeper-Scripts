@@ -1,3 +1,6 @@
+if(window.speedrunTimer !== undefined) return
+window.speedruntimer = true;
+
 let pageScripts = document.querySelectorAll("script[src]");
 let scriptNode = {};
 
