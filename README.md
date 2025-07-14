@@ -6,7 +6,7 @@ The purpose of this script is to add a more speedrunning oriented timer to the e
 The new timer is able to show the exact milliseconds that the game is stopped (either because of the player winning, losing or changing difficulty).  
 The timer is physically hooking into the game to determine when it should start and stop, **BUT** it does not affect any other aspect of the actual game.  
 
-# Left Click to chord
+# Left click to chord
 As the name implies, this script simply allows one to chord without having to press both the left and right mouse buttons (or the scroll wheel for that matter).  
 This is a feature that many other minesweeper versions have, and I thought it would be nice to have it in the Google version as well 😁
 
