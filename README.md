@@ -1,6 +1,8 @@
 # Google Minesweeper Scripts
+
 A collection of scripts for the [Google Minesweeper](https://www.google.com/fbx?fbx=minesweeper) game.  
 (It also works on the Google search version of the [game](https://www.google.com/search?q=minesweeper)).  
+
 # Speedrun Timer
 The purpose of this script is to add a more speedrunning oriented timer to the existing game.  
 The new timer is able to show the exact milliseconds that the game is stopped (either because of the player winning, losing or changing difficulty).  
