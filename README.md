@@ -16,7 +16,7 @@ This is a feature that many other minesweeper versions have, and I thought it wo
 
 # Both Scripts
 
-As the name implies, this combines both of the above scripts into one.
+As the name implies, this combines both of the scripts into one convenient package.  
 
 # How to use
 
