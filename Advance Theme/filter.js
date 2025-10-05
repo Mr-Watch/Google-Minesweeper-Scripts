@@ -1,3 +1,11 @@
+/*
+The following code was copied from a codepen by Barrett Sonntag
+Barrett Sonntag credits MultiplyByZer0 from a stackoverflow post
+https://codepen.io/sosuke/pen/Pjoqqp
+https://stackoverflow.com/questions/42966641/how-to-transform-black-into-any-given-color-using-only-css-filters/43960991#43960991
+Credit where is due :)
+*/
+
 class Color {
   constructor(t, s, h) {
     this.set(t, s, h);
