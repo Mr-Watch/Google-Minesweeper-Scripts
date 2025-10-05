@@ -7,6 +7,8 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @grant        GM_addElement
 // @run-at       document-start
+// @downloadURL https://github.com/Mr-Watch/Google-Minesweeper-Scripts/raw/refs/heads/main/Simple%20Theme/simple-theme.user.js
+// @updateURL https://github.com/Mr-Watch/Google-Minesweeper-Scripts/raw/refs/heads/main/Simple%20Theme/simple-theme.user.js
 
 // ==/UserScript==
 

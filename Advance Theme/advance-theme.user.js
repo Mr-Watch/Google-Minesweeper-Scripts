@@ -6,6 +6,8 @@
 // @match        https://www.google.com/fbx?fbx=minesweeper*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=google.com
 // @run-at       document-body
+// @downloadURL https://github.com/Mr-Watch/Google-Minesweeper-Scripts/raw/refs/heads/main/Advance%20Theme/advance-theme.user.js
+// @updateURL https://github.com/Mr-Watch/Google-Minesweeper-Scripts/raw/refs/heads/main/Advance%20Theme/advance-theme.user.js
 
 // ==/UserScript==
 
@@ -70,7 +72,7 @@
 
   let scriptElement = document.createElement("script");
   scriptElement.src =
-    "https://cdn.jsdelivr.net/gh/Mr-Watch/Google-Minesweeper-Scripts@main/filter.js";
+    "https://cdn.jsdelivr.net/gh/Mr-Watch/Google-Minesweeper-Scripts@main/Advance%20Theme/filter.js";
   scriptElement.addEventListener("load", () => {
     let customStyleSheet = ``;
 
