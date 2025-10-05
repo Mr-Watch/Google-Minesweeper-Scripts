@@ -5,6 +5,7 @@
 // @author       Mr-Watch
 // @match        https://www.google.com/fbx?fbx=minesweeper*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=google.com
+// @grand        unsafeWindow
 // @run-at       document-end
 // @downloadURL https://github.com/Mr-Watch/Google-Minesweeper-Scripts/raw/refs/heads/main/Left%20Click%20Cord/left-click-to-chord.js
 // @updateURL https://github.com/Mr-Watch/Google-Minesweeper-Scripts/raw/refs/heads/main/Left%20Click%20Cord/left-click-to-chord.js

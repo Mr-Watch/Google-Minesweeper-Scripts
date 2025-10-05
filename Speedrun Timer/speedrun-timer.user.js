@@ -5,6 +5,7 @@
 // @author       Mr-Watch
 // @match        https://www.google.com/fbx?fbx=minesweeper*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=google.com
+// @grand        unsafeWindow
 // @run-at       document-end
 // @downloadURL https://github.com/Mr-Watch/Google-Minesweeper-Scripts/raw/refs/heads/main/Speedrun%20Timer/speedrun-timer.js
 // @updateURL https://github.com/Mr-Watch/Google-Minesweeper-Scripts/raw/refs/heads/main/Speedrun%20Timer/speedrun-timer.js
@@ -14,8 +15,8 @@
 (async function () {
   "use strict";
 
-  if (window.speedrunTimer !== undefined) return;
-  window.speedruntimer = true;
+  if (unsafeWindow.speedrunTimer !== undefined) return;
+  unsafeWindow.speedruntimer = true;
 
   let pageScripts = document.querySelectorAll("script[src]");
   let scriptNode = {};
@@ -36,10 +37,10 @@
     keyTextIndex - 2,
     keyTextIndex
   );
-  let originalEntryFunction = window._s[[entryFunctionName]];
+  let originalEntryFunction = unsafeWindow._s[[entryFunctionName]];
   let initialTrigger = false;
 
-  window._s[[entryFunctionName]] = (a, b, c) => {
+  unsafeWindow._s[[entryFunctionName]] = (a, b, c) => {
     if (!initialTrigger) {
       initialTrigger = true;
       originalEntryFunction(a, b, c);
