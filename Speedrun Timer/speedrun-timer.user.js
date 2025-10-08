@@ -5,7 +5,7 @@
 // @author       Mr-Watch
 // @match        https://www.google.com/fbx?fbx=minesweeper*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=google.com
-// @grand        unsafeWindow
+// @grant        unsafeWindow
 // @run-at       document-end
 // @downloadURL https://github.com/Mr-Watch/Google-Minesweeper-Scripts/raw/refs/heads/main/Speedrun%20Timer/speedrun-timer.js
 // @updateURL https://github.com/Mr-Watch/Google-Minesweeper-Scripts/raw/refs/heads/main/Speedrun%20Timer/speedrun-timer.js
