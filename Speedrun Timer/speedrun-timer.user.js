@@ -1,11 +1,13 @@
 // ==UserScript==
 // @name         Google Minesweeper Speedrun Timer
 // @version      1.0
-// @description  Imbeds a speedrun timer that is accurate to the millisecond
+// @description  Adds a rather accurate speedrunning timer
 // @author       Mr-Watch
 // @match        https://www.google.com/fbx?fbx=minesweeper*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=google.com
-// @grand        unsafeWindow
+// @grant        GM_registerMenuCommand
+// @grant        GM_unregisterMenuCommand
+// @grant        unsafeWindow
 // @run-at       document-end
 // @downloadURL https://github.com/Mr-Watch/Google-Minesweeper-Scripts/raw/refs/heads/main/Speedrun%20Timer/speedrun-timer.js
 // @updateURL https://github.com/Mr-Watch/Google-Minesweeper-Scripts/raw/refs/heads/main/Speedrun%20Timer/speedrun-timer.js
@@ -14,7 +16,6 @@
 
 (async function () {
   "use strict";
-
   if (unsafeWindow.speedrunTimer !== undefined) return;
   unsafeWindow.speedruntimer = true;
 
@@ -39,10 +40,14 @@
   );
   let originalEntryFunction = unsafeWindow._s[[entryFunctionName]];
   let initialTrigger = false;
+  let secondTrigger = false;
 
   unsafeWindow._s[[entryFunctionName]] = (a, b, c) => {
     if (!initialTrigger) {
       initialTrigger = true;
+      originalEntryFunction(a, b, c);
+    } else if (!secondTrigger) {
+      secondTrigger = true;
       originalEntryFunction(a, b, c);
     } else {
       stopTimer();
@@ -50,6 +55,44 @@
       originalEntryFunction(a, b, c);
     }
   };
+
+  let msBetweenUpdates = setupVariableInLS("msBetweenUpdates", 100);
+  let menuCommand = 0;
+
+  function registerMenuCommand() {
+    menuCommand = GM_registerMenuCommand(
+      `Change the update interval of the timer : ${msBetweenUpdates}ms`,
+      function () {
+        msBetweenUpdates = prompt(
+          "Input an integer value representing the amount of ms between each update\n(e.g. 1000  for 1 second)",
+          msBetweenUpdates
+        );
+
+        if (
+          !/^[\d]{1,16}$/.test(msBetweenUpdates) ||
+          !Number.isSafeInteger(parseInt(msBetweenUpdates))
+        ) {
+          alert(
+            "The value provided is NOT a valid integer\nUsing default value of 100ms"
+          );
+          msBetweenUpdates = 100;
+        }
+
+        writeVariableInLS("msBetweenUpdates", parseInt(msBetweenUpdates));
+        updateMenuCommands();
+      },
+      {
+        autoclose: true,
+      }
+    );
+  }
+
+  function updateMenuCommands() {
+    GM_unregisterMenuCommand(menuCommand);
+    registerMenuCommand();
+  }
+
+  registerMenuCommand();
 
   let oldTimerNode = document.querySelector("div.KAQ14c:nth-child(4)");
   let canvasNode = document.querySelector(".ecwpfc");
@@ -90,7 +133,7 @@
 
   function startTimer() {
     start = Date.now();
-    timerInterval = setInterval(computeNextTimerUpdate, 100);
+    timerInterval = setInterval(computeNextTimerUpdate, msBetweenUpdates);
   }
 
   function stopTimer() {
@@ -120,4 +163,17 @@
     attributeOldValue: true,
     subtree: true,
   });
+
+  function writeVariableInLS(variableName, originalVariable) {
+    window.localStorage.setItem(variableName, JSON.stringify(originalVariable));
+  }
+
+  function setupVariableInLS(variableName, variableValue) {
+    if (!window.localStorage.getItem(variableName)) {
+      window.localStorage.setItem(variableName, JSON.stringify(variableValue));
+      return variableValue;
+    } else {
+      return JSON.parse(window.localStorage.getItem(variableName));
+    }
+  }
 })();
