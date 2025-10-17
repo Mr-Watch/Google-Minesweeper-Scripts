@@ -72,13 +72,15 @@
           !/^[\d]{1,16}$/.test(msBetweenUpdates) ||
           !Number.isSafeInteger(parseInt(msBetweenUpdates))
         ) {
-          alert(
-            "The value provided is NOT a valid integer\nUsing default value of 100ms"
-          );
+          if (msBetweenUpdates !== null) {
+            alert(
+              "The value provided is NOT a valid integer\nUsing default value of 100ms"
+            );
+          }
           msBetweenUpdates = 100;
+          writeVariableInLS("msBetweenUpdates", parseInt(msBetweenUpdates));
         }
 
-        writeVariableInLS("msBetweenUpdates", parseInt(msBetweenUpdates));
         updateMenuCommands();
       },
       {
